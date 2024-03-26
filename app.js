@@ -25,7 +25,6 @@ app.use((req, res, next) => {
 
 app.use("/api/users", usersRouter);
 
-// app.use("/api/ingredients", ingredientsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
