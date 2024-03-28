@@ -12,7 +12,9 @@ const getDataByDate = async (req, res, next) => {
 
   const result = await User.find();
 
-  const filteredData = result.data.filter((item) => {
+  console.log(result);
+
+  const filteredData = result[0].data.filter((item) => {
     const dateStamp = new Date(item.dateStamp);
     return dateStamp >= startDate && dateStamp <= endDate;
   });
