@@ -9,10 +9,7 @@ const getDataByDate = async (req, res, next) => {
   const startDate = start_date
     ? new Date(start_date)
     : new Date(endDate.getFullYear(), endDate.getMonth(), 1);
-
   const result = await User.find();
-
-  console.log(result);
 
   const filteredData = result[0].data.filter((item) => {
     const dateStamp = new Date(item.dateStamp);
@@ -24,7 +21,7 @@ const getDataByDate = async (req, res, next) => {
   }
 
   res.json({
-    general: result.general,
+    general: result[0].general,
     data: filteredData,
   });
 };
