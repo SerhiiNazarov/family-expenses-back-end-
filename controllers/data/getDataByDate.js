@@ -5,10 +5,11 @@ const { HttpError, ctrlWrapper } = require("../../helpers");
 const getDataByDate = async (req, res, next) => {
   const { start_date, end_date } = req.body;
 
-  const endDate = end_date ? new Date(end_date) : new Date();
+  const endDate = end_date ? new Date(`${end_date}T23:59:59Z`) : new Date();
   const startDate = start_date
-    ? new Date(start_date)
-    : new Date(endDate.getFullYear(), endDate.getMonth(), 1);
+    ? new Date(`${start_date}T00:00:00Z`)
+    : new Date(Date.UTC(endDate.getUTCFullYear(), endDate.getUTCMonth(), 1));
+
   const result = await User.find();
 
   const filteredData = result[0].data.filter((item) => {

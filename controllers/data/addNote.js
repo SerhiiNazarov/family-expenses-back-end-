@@ -7,7 +7,7 @@ const addNote = async (req, res, next) => {
 
   const changeGeneralValue = profit ? profit : -exes;
 
-  const dateStamp = new Date("2024-03-01");
+  const dateStamp = new Date();
 
   const result = await User.findOneAndUpdate(
     { user: "Melania" },
