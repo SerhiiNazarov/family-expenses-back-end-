@@ -3,7 +3,7 @@ const { User } = require("../../models/user");
 const { HttpError, ctrlWrapper } = require("../../helpers");
 
 const getDataByDate = async (req, res, next) => {
-  const { start_date, end_date } = req.body;
+  const { start_date, end_date } = req.query;
 
   const endDate = end_date ? new Date(`${end_date}T23:59:59Z`) : new Date();
   const startDate = start_date
